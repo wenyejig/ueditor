@@ -30,6 +30,7 @@
             'plugins/justify.js',
             'plugins/font.js',
             'plugins/link.js',
+            'plugins/navigate.js',
             'plugins/iframe.js',
             'plugins/scrawl.js',
             'plugins/removeformat.js',

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;color: #838383;}
+        table{font-size: 12px;margin: 10px;line-height: 30px}
+        .txt{width:300px;height:21px;line-height:21px;border:1px solid #d7d7d7;}
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><label for="lat"> 纬度</label></td>
+            <td><input class="txt" id="lat" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="lng">经度</label></td>
+            <td><input class="txt" id="lng" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="title"> 目标地点标题</label></td>
+            <td><input class="txt" id="title" type="text"/></td>
+        </tr>
+         
+        <tr>
+            <td colspan="2" id="msg"></td>
+        </tr>
+    </table>
+<script type="text/javascript">
+        var range = editor.selection.getRange(), orgText="一键导航";
+
+    function handleDialogOk(){
+		var location = (window.location+'').split('/');  
+		var basePath = location[0]+'//'+location[2]+'/'+location[3];
+		//维度
+		var lat=$G('lat').value.replace(/^\s+|\s+$/g, '');
+		//经度
+		var lng=$G('lng').value.replace(/^\s+|\s+$/g, '');
+		//titlename
+		var title=$G('title').value.replace(/^\s+|\s+$/g, '');
+ 		var href=basePath+'/navigate.html?p1='+lat+','+lng+'|name:'+title;
+         if(href){
+            if(!hrefStartWith(href,["http","tel","/","ftp://"])) {
+                href  = "http://" + href;
+            }
+            var obj = {
+                'href' : href,
+                'target' : '_self',
+                'title' : $G("title").value.replace(/^\s+|\s+$/g, ''),
+                '_href':href
+            };
+            //修改链接内容的情况太特殊了，所以先做到这里了
+
+            if(orgText   != orgText){
+                link[browser.ie ? 'innerText' : 'textContent'] =  obj.textValue = "一键导航";
+                range.selectNode(link).select()
+            }
+            if(range.collapsed){
+                obj.textValue = "一键导航";
+            }
+            editor.execCommand('navigate',obj );
+            dialog.close();
+        }
+    }
+    dialog.onok = handleDialogOk;
+    $G('lng').onkeydown = $G('title').onkeydown = function(evt){
+        evt = evt || window.event;
+        if (evt.keyCode == 13) {
+            handleDialogOk();
+            return false;
+        }
+    };
+    
+
+    function hrefStartWith(href,arr){
+        href = href.replace(/^\s+|\s+$/g, '');
+        for(var i=0,ai;ai=arr[i++];){
+            if(href.indexOf(ai)==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+</script>
+</body>
+</html>

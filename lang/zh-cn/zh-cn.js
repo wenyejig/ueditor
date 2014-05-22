@@ -16,7 +16,7 @@ UE.I18N['zh-cn'] = {
         'deleterow':'删除行', 'deletecol':'删除列', 'splittorows':'拆分成行',
         'splittocols':'拆分成列', 'splittocells':'完全拆分单元格','deletecaption':'删除表格标题','inserttitle':'插入标题',
         'mergecells':'合并多个单元格', 'deletetable':'删除表格', 'cleardoc':'清空文档','insertparagraphbeforetable':"表格前插入行",'insertcode':'代码语言',
-        'fontfamily':'字体', 'fontsize':'字号', 'paragraph':'段落格式', 'simpleupload':'单图上传', 'insertimage':'多图上传','edittable':'表格属性','edittd':'单元格属性', 'link':'超链接',
+        'fontfamily':'字体', 'fontsize':'字号', 'paragraph':'段落格式', 'simpleupload':'单图上传', 'insertimage':'多图上传','edittable':'表格属性','edittd':'单元格属性', 'link':'超链接', 'navigate':'一键导航',
         'emotion':'表情', 'spechars':'特殊字符', 'searchreplace':'查询替换', 'map':'Baidu地图', 'gmap':'Google地图',
         'insertvideo':'视频', 'help':'帮助', 'justifyleft':'居左对齐', 'justifyright':'居右对齐', 'justifycenter':'居中对齐',
         'justifyjustify':'两端对齐', 'forecolor':'字体颜色', 'backcolor':'背景色', 'insertorderedlist':'有序列表',
@@ -541,6 +541,16 @@ UE.I18N['zh-cn'] = {
         'enterAddress':'请输入地址!'
     },
     'link':{
+        'static':{
+            'lang_input_text':'文本内容：',
+            'lang_input_url':'链接地址：',
+            'lang_input_title':'标题：',
+            'lang_input_target':'是否在新窗口打开：'
+        },
+        'validLink':'只支持选中一个链接时生效',
+        'httpPrompt':'您输入的超链接中不包含http等协议名称，默认将为您添加http://前缀'
+    },
+    'navigate':{
         'static':{
             'lang_input_text':'文本内容：',
             'lang_input_url':'链接地址：',
